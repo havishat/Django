@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Session Words</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'swords/style.css' %}">
+    </head>
+    <body>
+        <div class="separator">
+            <form action="surveys/add_word" method="post">
+            {% csrf_token %}
+                <div class="form-group">
+                    <h1>Add a new word</h1>
+                    <input type="text" name="word">
+                </div>
+                <div class="form-group">
+                    <label for="color"><p>Choose color</p></label>
+                    <input type="radio" name="color" value="red" checked>Red<br>
+                    <input type="radio" name="color" value="green">Green<br>
+                    <input type="radio" name="color" value="blue">Blue<br>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="bigfont">
+                    <label>show in BIG fonts!</label>
+                    <br>
+                </div>
+                <button class = "b" type="submit">Add to Session</button>
+            </form> 
+        </div>
+        <div class="separator">
+            <a href="/surveys/clear"><button class = "r">Clear Session</button></a>
+            {% if request.session.words %}
+                {% for word in request.session.words %}
+                <p><span style="color:{{ word.color }}" class="{{ word.bigfont }}">{{word.word}}</span> - added on {{ word.created_at }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+            <!--<p>{{request.session.word}} added on {{time}}</p>-->
+    </body>
+</html>
