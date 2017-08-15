@@ -1,0 +1,26 @@
+.b{
+    background-color: lightblue;
+}
+.r{
+    background-color: 	#F08080;
+}
+.separator{
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+    height: 500px;
+}
+.separator:nth-child(2){
+    border-left: solid 2px black;
+    padding-left: 30px;
+}
+.form-group{
+    margin: 10px;
+}
+.bigfont{
+    font-size: 2em;
+}
+.word{
+    margin: 3px;
+}
+
